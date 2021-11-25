@@ -1,0 +1,24 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:3.0.9'
+//    implementation 'org.apache.groovy:groovy:4.0.0-beta-2' //main works with groovy 4 but spock does not
+    testImplementation ('org.spockframework:spock-core:2.1-M2-groovy-3.0') {
+        exclude group: 'org.codehaus.groovy', module: 'groovy'
+    }
+
+}
+
+test {
+    useJUnitPlatform()
+}
